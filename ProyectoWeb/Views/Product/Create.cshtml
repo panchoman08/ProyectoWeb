@@ -1,0 +1,82 @@
+﻿
+@model ProductCreate
+
+@{
+    //ProductCreate modelo = new ProductCreate();
+}
+
+
+<div class="card col-lg-12 row">
+    <div class="card-header">
+       <h2>Nuevo Producto</h2>
+    </div>
+    
+    <div class="card-body">
+
+        <form class="" asp-controller="Product" asp-action="Create" method="post">
+            <div class="mb-2">
+                <label class="form-label">Código</label>
+                <input type="text" class="form-control" asp-for="Sku" />
+                <span class="text-danger" asp-validation-for="Sku"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Descripción</label>
+                <input type="text" class="form-control" asp-for="Description" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Precio</label>
+                <input type="text" class="form-control" asp-for="BuyPrice" />
+                <span class="text-danger" asp-validation-for="BuyPrice"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Categoria</label>
+                <br />
+                <select class="form-select" asp-for="CategoryId">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="CategoryId"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Medida</label>
+                <select class="form-select" asp-for="MeasureId">
+                    @foreach (var measure in ViewBag.Measures)
+                    {
+                        <option value="@measure.Id">@measure.Name</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="MeasureId"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Estado</label>
+                <div>
+                    <input type="radio" asp-for ="StatusId"
+                     value="1">
+                    <label asp-for="StatusId">Alta</label>
+
+                    <input type="radio" asp-for = "StatusId"
+                     value="2">
+                    <label asp-for="StatusId">Baja</label>
+                </div>
+                <span class="text-danger" asp-validation-for="StatusId"></span>
+            </div>
+
+            <div class="" style="float:right;">
+                 <input type="submit" class="btn btn-primary mx-2" id="save"  value="Guardar" />
+                 <a class="btn btn-danger" asp-controller="Product" asp-action="Index">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+</div>

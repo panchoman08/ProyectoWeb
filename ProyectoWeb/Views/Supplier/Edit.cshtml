@@ -1,0 +1,56 @@
+﻿@using ProyectoWeb.Models.supplier
+@model dynamic
+
+@{
+    SupplierModel modelo = Model.Supplier as SupplierModel;
+}
+
+<div class="card col-lg-12 row">
+    <div class="card-header">
+       <h2>Actualizar Proveedor</h2>
+    </div>
+    
+    <div class="card-body">
+
+        <form class="" asp-controller="Supplier" asp-action="Edit" method="post">
+            <div class="mb-2">
+                <label class="form-label">NIT</label>
+                <input type="text" class="form-control" asp-for="@modelo.Nit"/>
+                <span class="text-danger" asp-validation-for="@modelo.Nit"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" asp-for="@modelo.Name" />
+                <span class="text-danger" asp-validation-for="@modelo.Name" ></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" asp-for="@modelo.Address" />
+                <span class="text-danger" asp-validation-for="@modelo.Address" ></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Télefono</label>
+                <input type="text" class="form-control" asp-for="@modelo.Phone" />
+                <span class="text-danger" asp-validation-for="@modelo.Phone"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Categoria</label>
+                <br />
+                <select class="form-select" asp-for="@modelo.CategoryId">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="@modelo.CategoryId"></span>
+            </div>
+
+            <div class="" style="float:right;">
+                 <input type="submit" class="btn btn-primary mx-2" id="save" asp-route-id="@modelo.Id" value="Guardar" />
+                 <a class="btn btn-danger" asp-controller="Supplier" asp-action="Index">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@using ProyectoWeb.Models.customer
+@model CustomerCreateModel
+
+<div class="card col-lg-12 row">
+    <div class="card-header">
+       <h2>Nuevo Cliente</h2>
+    </div>
+    
+    <div class="card-body">
+
+        <form class="" asp-controller="Customer" asp-action="Create" method="post">
+            <div class="mb-2">
+                <label class="form-label">NIT</label>
+                <input type="text" class="form-control"  asp-for="Nit"/>
+                <span class="text-danger" asp-validation-for="Nit"></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name" ></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" asp-for="Address" />
+                <span class="text-danger" asp-validation-for="Address" ></span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Télefono</label>
+                <input type="text" class="form-control" asp-for="Phone" />
+                <span class="text-danger" asp-validation-for="Phone"></span>
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Categoria</label>
+                <br />
+                <select class="form-select" asp-for="CategoryId">
+                @{
+                    foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                }
+                </select>
+                <span class="text-danger" ></span>
+            </div>
+
+            <div class="" style="float:right;">
+                 <input type="submit" class="btn btn-primary mx-2" id="save"  value="Guardar" />
+                 <a class="btn btn-danger" asp-controller="Customer" asp-action="Index">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+</div>

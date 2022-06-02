@@ -1,0 +1,48 @@
+﻿@using ProyectoWeb.Models.supplier
+@model List<SupplierModel>
+
+
+<div class="container">
+    <h1 class="mb-2">Proveedores</h1>
+    <a class="btn btn-outline-success mb-2" asp-controller="Supplier" asp-action="Create">
+        <i class="bi bi-plus-circle"></i> &nbsp;Agregar Proveedor
+    </a>
+    <div class="bg-light mt-5 mx-2">
+        <table class="table table-striped">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Nit</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Category Id</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => item.Id)</td>
+                            <td>@Html.DisplayFor(x => item.Nit)</td>
+                            <td>@Html.DisplayFor(x => item.Name)</td>
+                            <td>@Html.DisplayFor(x => item.Address)</td>
+                            <td>@Html.DisplayFor(x => item.Phone)</td>
+                            <td>@Html.DisplayFor(x => item.CategoryId)</td>
+                            <td>
+                                <a class="btn btn-outline-primary" asp-controller="Supplier" asp-action="Edit" asp-route-id="@item.Id">
+                                    <i class="bi bi-pencil-square w-10"></i>
+                                </a>
+                                <a class="btn btn-outline-danger" asp-controller="Supplier" asp-action="Delete" asp-route-id="@item.Id">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
